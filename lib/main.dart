@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nt_1207/page/home.dart';
+import 'package:nt_1207/page/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-          const HomePage(), //todo  ----------------------------------------------------------------- แก้เป็นหน้าหลัก
+          const LoginPage(), //todo  ----------------------------------------------------------------- แก้เป็นหน้าแรก
       debugShowCheckedModeBanner: false, //?ลบ DEbug banner
     );
   }

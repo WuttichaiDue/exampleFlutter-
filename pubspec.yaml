@@ -26,7 +26,7 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
-dependencies:
+dependencies: 
   flutter:
     sdk: flutter
 
@@ -34,8 +34,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  carousel_slider: ^4.0.0
-
+  carousel_slider: ^4.0.0 #รูปไสด์  : https://pub.dev/packages/carousel_slider
+  dio: ^4.0.4 #Call Api : https://pub.dev/packages/dio
+  shared_preferences: ^2.0.11 # จำแคส : https://pub.dev/packages/shared_preferences
+  google_maps_flutter: ^2.1.1 # Google Map : https://pub.dev/packages/google_maps_flutter
+  # geolocator: ^8.0.1  #GPS : https://pub.dev/packages/geolocator
+  # webview_flutter: ^2.5.0 # WebView : https://pub.dev/packages/webview_flutter
+  # flutter_inappwebview: ^5.3.2 # WebView : https://pub.dev/packages/flutter_inappwebview
+  flutter_webview_plugin: ^0.4.0 # WebView : https://pub.dev/packages/flutter_webview_plugin
+  location: ^4.2.0 #GPS : https://pub.dev/packages/location
 dev_dependencies:
   flutter_test:
     sdk: flutter

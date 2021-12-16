@@ -1,5 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:nt_1207/models/global.dart';
+import 'package:nt_1207/page/api.dart';
+import 'package:nt_1207/page/map.dart';
+import 'package:nt_1207/page/webview.dart';
 import 'package:nt_1207/styles/color_main.dart';
 
 //! =========================================== หน้าหลัก ===========================================
@@ -60,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                   margin: EdgeInsets.only(
                       left: 10), //? ใส่ margin ให้ข้อความอยู่ห่างจากรูป
                   child: kanitText(
-                      'เทศบาลเมืองมหาสารคาม', 0.04, ColorsMain().color4))),
+                      '${Global.textString}', 0.04, ColorsMain().color4))),
         ],
       ),
     );
@@ -143,11 +147,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   //* ------ Method สร้าง  Button -----
-  Widget button1(String text) {
+  Widget button1(String text, Function function) {
     return InkWell(
       //?  InkWWell ทำให้ Container หรือ Widget ต่างๆ เป็นปุ่มได้
       onTap: () {
-        print(text);
+        function();
       },
       child: Center(
         child: Container(
@@ -179,6 +183,37 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> noneActive() async {}
+  //* ------ Method ไปหน้า API -----
+  Future<void> covidApi() async {
+    MaterialPageRoute materialPageRoute =
+        MaterialPageRoute(builder: (BuildContext buildContext) {
+      return APIPage();
+    });
+
+    Navigator.of(context).push(materialPageRoute);
+  }
+
+  //* ------ Method ไปหน้า webview -----
+  Future<void> webview() async {
+    MaterialPageRoute materialPageRoute =
+        MaterialPageRoute(builder: (BuildContext buildContext) {
+      return WebViewPage();
+    });
+
+    Navigator.of(context).push(materialPageRoute);
+  }
+
+  //* ------ Method ไปหน้า MAP -----
+  Future<void> mapPage() async {
+    MaterialPageRoute materialPageRoute =
+        MaterialPageRoute(builder: (BuildContext buildContext) {
+      return MapPage();
+    });
+
+    Navigator.of(context).push(materialPageRoute);
   }
 
   //* ------ Method สร้าง List Button -----
@@ -214,9 +249,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment
                     .spaceAround, //? ทำให้ของใน Row แบ่งพื้นที่เท่าๆกัน
                 children: [
-                  button1('แจ้งเหตุฉุกเฉิน'),
-                  button1('ร้องเรียน'),
-                  button1('สายด่วน'),
+                  button1('Covid รายวัน', covidApi),
+                  button1('webview', webview),
+                  button1('สายด่วน', noneActive),
                 ],
               ),
             ),
@@ -228,9 +263,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment
                     .spaceAround, //? ทำให้ของใน Row แบ่งพื้นที่เท่าๆกัน
                 children: [
-                  button1('ข่าวสาร'),
-                  button1('บทความ'),
-                  button1('CCTV'),
+                  button1('ข่าวสาร', noneActive),
+                  button1('บทความ', noneActive),
+                  button1('CCTV', noneActive),
                 ],
               ),
             ),
@@ -242,9 +277,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment
                     .spaceAround, //? ทำให้ของใน Row แบ่งพื้นที่เท่าๆกัน
                 children: [
-                  button1('รางวัลที่เคยได้รับ'),
-                  button1('Youtuber'),
-                  button1('ช่วยเหลือ'),
+                  button1('รางวัลที่เคยได้รับ', noneActive),
+                  button1('Youtuber', noneActive),
+                  button1('ช่วยเหลือ', noneActive),
                 ],
               ),
             ),
@@ -256,9 +291,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment
                     .spaceAround, //? ทำให้ของใน Row แบ่งพื้นที่เท่าๆกัน
                 children: [
-                  button1('ท่องเที่ยว'),
-                  button1('สินค้า OTOP'),
-                  button1('ทดสอบ MAP'),
+                  button1('ท่องเที่ยว', noneActive),
+                  button1('สินค้า OTOP', noneActive),
+                  button1('ทดสอบ MAP', mapPage),
                 ],
               ),
             ),
