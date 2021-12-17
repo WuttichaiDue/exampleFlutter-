@@ -23,6 +23,9 @@ class MapPageState extends State<MapPage> {
   // ignore: sdk_version_set_literal
   Set<Marker> _markers = {};
   Completer<GoogleMapController> _controller = Completer();
+
+
+
   Future<void> getLocation() async {
     Location location = new Location();
 
@@ -47,8 +50,8 @@ class MapPageState extends State<MapPage> {
     }
 
     _locationData = await location.getLocation();
-    print(_locationData.latitude);
-    print(_locationData.longitude);
+    print(_locationData.latitude); //!----------------- location คนกด
+    print(_locationData.longitude); //!----------------- location คนกด
     // var latlng = await Gps.currentGps();
     // print(latlng.lat);
     // print(latlng.lng);

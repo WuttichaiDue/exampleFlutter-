@@ -3,6 +3,7 @@ import 'package:nt_1207/models/global.dart';
 import 'package:nt_1207/page/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -30,7 +31,9 @@ class _LoginPageState extends State<LoginPage> {
     //  print(userModel.name);
     print("========================================================>SAVE");
     List<String> list = [];
-    list.add(textString);
+
+    list.add('ชื่อจริง');
+    list.add('นามสกุล');
     //list.add(password);
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -62,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
 
         print(textStringRead);
         Global.textString = textStringRead; //? เซ็ตข้อมูลไปเป็น global
+        Global.test ='test';
         //? =================================== เปลี่ยนหน้า ===================================
         MaterialPageRoute materialPageRoute =
             MaterialPageRoute(builder: (BuildContext buildContext) {

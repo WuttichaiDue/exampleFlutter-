@@ -33,6 +33,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  webview_flutter: ^3.0.0
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.0.0 #รูปไสด์  : https://pub.dev/packages/carousel_slider
   dio: ^4.0.4 #Call Api : https://pub.dev/packages/dio
@@ -43,6 +44,7 @@ dependencies:
   # flutter_inappwebview: ^5.3.2 # WebView : https://pub.dev/packages/flutter_inappwebview
   flutter_webview_plugin: ^0.4.0 # WebView : https://pub.dev/packages/flutter_webview_plugin
   location: ^4.2.0 #GPS : https://pub.dev/packages/location
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

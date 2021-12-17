@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nt_1207/models/covid.dart';
+import 'package:nt_1207/models/covid1.dart';
+import 'package:nt_1207/models/global.dart';
 
 class APIPage extends StatefulWidget {
   const APIPage({Key? key}) : super(key: key);
@@ -24,6 +26,7 @@ class _APIPageState extends State<APIPage> {
   int newRecovered = 0;
   int totalRecovered = 0;
   String updateDate = '';
+  List<Covid1> covid1list = [];
   //todo =========================================== Method ========================================================
   //* ------ Method เรียกใช้งาน API -----
   Future<void> getCovidToday() async {
@@ -47,23 +50,33 @@ class _APIPageState extends State<APIPage> {
     //     options: Options(headers: headers));
     var result = response.data;
     print(result);
+    //[{"txn_date":"2021-12-17","new_case":3537,"total_case":2185497,"new_case_excludeabroad":3520,"total_case_excludeabroad":2178366,"new_death":41,"total_death":21327,"new_recovered":5459,"total_recovered":2120910,"update_date":"2021-12-17 07:32:55"}]
     //Devices.devices.clear();
     for (var item in result) {
       setState(() {
-        Covid covidtoday = Covid.fromJson(item);
-        txnDate = covidtoday.txnDate;
-        newCase = covidtoday.newCase;
-        totalCase = covidtoday.totalCase;
-        newCaseExcludeabroad = covidtoday.newCaseExcludeabroad;
-        totalCaseExcludeabroad = covidtoday.totalCaseExcludeabroad;
-        newDeath = covidtoday.newDeath;
-        totalDeath = covidtoday.totalDeath;
-        newRecovered = covidtoday.newRecovered;
-        totalRecovered = covidtoday.totalRecovered;
-        updateDate = covidtoday.updateDate;
+        Covid1 covidtoday = Covid1.fromJson(item);
+        // txnDate = covidtoday.txnDate;
+        // newCase = covidtoday.newCase;
+        // totalCase = covidtoday.totalCase;
+        // newCaseExcludeabroad = covidtoday.newCaseExcludeabroad;
+        // totalCaseExcludeabroad = covidtoday.totalCaseExcludeabroad;
+        // newDeath = covidtoday.newDeath;
+        // totalDeath = covidtoday.totalDeath;
+        // // newRecovered = covidtoday.newRecovered;
+        // // totalRecovered = covidtoday.totalRecovered;
+        // updateDate = covidtoday.updateDate;
+
+        covid1list.add(covidtoday);
+
+        Global.covid1ListGlobal = covid1list;
+
         print(covidtoday.newCase);
         //  today.add(covidtoday);
       });
+      //Global.covid1ListGlobal[1].newCaseExcludeabroad;
+      for (var item1 in Global.covid1ListGlobal) {
+        //  item1.newCaseExcludeabroad
+      }
     }
   }
 
@@ -108,6 +121,16 @@ class _APIPageState extends State<APIPage> {
               kanitText(
                   'ผู้ที่รักษาหายทั้งหมด $totalRecovered', 0.05, Colors.black),
               kanitText('อัพเดตตอน $updateDate', 0.05, Colors.black),
+              // ListView.builder(
+              //   scrollDirection: Axis.horizontal,
+              //   itemCount: Global.covid1ListGlobal.length,
+              //   itemBuilder: (BuildContext buildcontext, int index) {
+              //     return Container(
+              //       child: kanitText(Global.covid1ListGlobal[index].txnDate,
+              //           0.1, Colors.red),
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),
